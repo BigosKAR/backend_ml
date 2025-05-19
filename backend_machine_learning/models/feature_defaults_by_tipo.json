@@ -1,0 +1,530 @@
+{
+    "Pantalla_Tamaño de la pantalla": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 15.6
+        }
+    },
+    "Pantalla_Tecnología de la pantalla": {
+        "Desktop": {
+            "default": null
+        },
+        "Laptop": {
+            "default": "Full HD"
+        }
+    },
+    "Pantalla_Luminosidad": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 300.0
+        }
+    },
+    "Procesador_Procesador": {
+        "Desktop": {
+            "default": "Intel Core i5"
+        },
+        "Laptop": {
+            "default": "Intel Core i7"
+        }
+    },
+    "Disco duro_Tipo de disco duro": {
+        "Desktop": {
+            "default": "SSD"
+        },
+        "Laptop": {
+            "default": "SSD"
+        }
+    },
+    "Gráfica_Salida de vídeo": {
+        "Desktop": {
+            "default": "HDMI"
+        },
+        "Laptop": {
+            "default": "HDMI"
+        }
+    },
+    "Conectividad_Lector de tarjetas": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "integrado"
+        }
+    },
+    "Comunicaciones_Versión Bluetooth": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 5.2
+        }
+    },
+    "Cámara_Función de la cámara": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "compatible con HD"
+        }
+    },
+    "Sonido_Número de altavoces": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 2.0
+        }
+    },
+    "Alimentación_Batería": {
+        "Desktop": {
+            "default": "unknown"
+        },
+        "Laptop": {
+            "default": "lithium"
+        }
+    },
+    "Alimentación_Autonomía de la batería": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 10.0
+        }
+    },
+    "Alimentación_Vatios-hora": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 55.0
+        }
+    },
+    "Alimentación_Alimentación": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 65.0
+        }
+    },
+    "Medidas y peso_Material de la carcasa": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "missing"
+        }
+    },
+    "Medidas y peso_Diseño": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "standard"
+        }
+    },
+    "Medidas y peso_Profundidad": {
+        "Desktop": {
+            "default": 30.3
+        },
+        "Laptop": {
+            "default": 23.8
+        }
+    },
+    "Medidas y peso_Ancho": {
+        "Desktop": {
+            "default": 18.3
+        },
+        "Laptop": {
+            "default": 35.7
+        }
+    },
+    "Medidas y peso_Peso": {
+        "Desktop": {
+            "default": 1.7
+        },
+        "Laptop": {
+            "default": 1.7
+        }
+    },
+    "Comunicaciones_Estándar wifi": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "Wi-Fi 6/6E"
+        }
+    },
+    "Disco duro_Número de discos duros (instalados)": {
+        "Desktop": {
+            "default": 1.0
+        },
+        "Laptop": {
+            "default": 1.0
+        }
+    },
+    "Gráfica_Memoria gráfica": {
+        "Desktop": {
+            "default": 8.0
+        },
+        "Laptop": {
+            "default": 8.192
+        }
+    },
+    "Sistema operativo_Sistema operativo": {
+        "Desktop": {
+            "default": "no_os"
+        },
+        "Laptop": {
+            "default": "windows 11 home"
+        }
+    },
+    "Sonido_Sistema de altavoces": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "altavoces estéreo"
+        }
+    },
+    "Pantalla_Formato de imagen": {
+        "Desktop": {
+            "default": null
+        },
+        "Laptop": {
+            "default": "16:9"
+        }
+    },
+    "Procesador_Caché": {
+        "Desktop": {
+            "default": 18.0
+        },
+        "Laptop": {
+            "default": 16.0
+        }
+    },
+    "RAM_Memoria RAM": {
+        "Desktop": {
+            "default": 16.0
+        },
+        "Laptop": {
+            "default": 16.0
+        }
+    },
+    "RAM_Tipo de RAM": {
+        "Desktop": {
+            "default": "ddr4"
+        },
+        "Laptop": {
+            "default": "Unknown"
+        }
+    },
+    "Disco duro_Capacidad de memoria SSD": {
+        "Desktop": {
+            "default": 512.0
+        },
+        "Laptop": {
+            "default": 512.0
+        }
+    },
+    "Alimentación_Número de celdas": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 3.0
+        }
+    },
+    "Procesador_Número de núcleos del procesador": {
+        "Desktop": {
+            "default": 8.0
+        },
+        "Laptop": {
+            "default": 10.0
+        }
+    },
+    "Procesador_Frecuencia de reloj": {
+        "Desktop": {
+            "default": 0.0032
+        },
+        "Laptop": {
+            "default": 1.0
+        }
+    },
+    "Procesador_Frecuencia turbo máx.": {
+        "Desktop": {
+            "default": 4.0
+        },
+        "Laptop": {
+            "default": 4.0
+        }
+    },
+    "Gráfica_Tipo de memoria gráfica": {
+        "Desktop": {
+            "default": "GDDR6"
+        },
+        "Laptop": {
+            "default": "Shared"
+        }
+    },
+    "Gráfica_Tarjeta gráfica": {
+        "Desktop": {
+            "default": "Intel UHD"
+        },
+        "Laptop": {
+            "default": "Intel Iris"
+        }
+    },
+    "Almacenamiento_Lector óptico": {
+        "Desktop": {
+            "default": "ninguno"
+        },
+        "Laptop": {
+            "default": "ninguno"
+        }
+    },
+    "Pantalla_Pantalla": {
+        "Desktop": {
+            "default": null
+        },
+        "Laptop": {
+            "default": "panorámica"
+        }
+    },
+    "Comunicaciones_Estándar LAN": {
+        "Desktop": {
+            "default": "Gigabit Ethernet"
+        },
+        "Laptop": {
+            "default": "none"
+        }
+    },
+    "Propiedades de la carcasa_Tipo de caja": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "missing"
+        }
+    },
+    "Medidas y peso_Alto": {
+        "Desktop": {
+            "default": 31.9
+        },
+        "Laptop": {
+            "default": 1.9
+        }
+    },
+    "Propiedades de la carcasa_Alimentación": {
+        "Desktop": {
+            "default": "missing"
+        },
+        "Laptop": {
+            "default": "missing"
+        }
+    },
+    "Procesador_Zócalo de CPU": {
+        "Desktop": {
+            "default": "Socket 1700"
+        },
+        "Laptop": {
+            "default": null
+        }
+    },
+    "Procesador_Número de hilos de ejecución": {
+        "Desktop": {
+            "default": 16.0
+        },
+        "Laptop": {
+            "default": 16.0
+        }
+    },
+    "Procesador_TDP": {
+        "Desktop": {
+            "default": 65.0
+        },
+        "Laptop": {
+            "default": 28.0
+        }
+    },
+    "product_type_group": {
+        "Desktop": {
+            "default": "Desktop – Standard"
+        },
+        "Laptop": {
+            "default": "Laptop – Standard"
+        }
+    },
+    "is_laptop": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 1.0
+        }
+    },
+    "marca": {
+        "Desktop": {
+            "default": "Vibox"
+        },
+        "Laptop": {
+            "default": "Lenovo"
+        }
+    },
+    "screen_size_class": {
+        "Desktop": {
+            "default": null
+        },
+        "Laptop": {
+            "default": "37–41 cm"
+        }
+    },
+    "screen_width_px": {
+        "Desktop": {
+            "default": NaN
+        },
+        "Laptop": {
+            "default": 1920.0
+        }
+    },
+    "screen_height_px": {
+        "Desktop": {
+            "default": NaN
+        },
+        "Laptop": {
+            "default": 1080.0
+        }
+    },
+    "screen_total_px": {
+        "Desktop": {
+            "default": NaN
+        },
+        "Laptop": {
+            "default": 2073600.0
+        }
+    },
+    "screen_resolution_class": {
+        "Desktop": {
+            "default": null
+        },
+        "Laptop": {
+            "default": "2–4MP"
+        }
+    },
+    "SSD_missing": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "Disco duro_Numero de discos": {
+        "Desktop": {
+            "default": "1"
+        },
+        "Laptop": {
+            "default": "1"
+        }
+    },
+    "Comunicaciones_bluetooth": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 1.0
+        }
+    },
+    "Comunicaciones_lan": {
+        "Desktop": {
+            "default": 1.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "Comunicaciones_missing": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "Comunicaciones_nfc": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "Comunicaciones_infrarrojos": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "Comunicaciones_wifidirect": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "Comunicaciones_ethernet": {
+        "Desktop": {
+            "default": 1.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "has_webcam": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 1.0
+        }
+    },
+    "GPU_missing": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    },
+    "has_webcam_from_equipamiento": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 1.0
+        }
+    },
+    "años_desde_lanzamiento": {
+        "Desktop": {
+            "default": 0.0
+        },
+        "Laptop": {
+            "default": 2.0
+        }
+    },
+    "release_year_missing": {
+        "Desktop": {
+            "default": 1.0
+        },
+        "Laptop": {
+            "default": 0.0
+        }
+    }
+}

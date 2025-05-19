@@ -12,16 +12,12 @@ from sklearn.metrics.pairwise import euclidean_distances
 base_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(base_dir, 'best_xgb_model.pkl')
 preprocess_path = os.path.join(base_dir, 'preprocessing_config.pkl')
-defaults_path = os.path.join(base_dir, 'default_values.json')
 data_path = os.path.join(base_dir, 'db_computers_2025_clean.csv')
 
 model = joblib.load(model_path)
 preprocessing = joblib.load(preprocess_path)
 expected_columns = preprocessing['columns']
 imputer = preprocessing['imputer']
-
-with open(defaults_path, 'r', encoding='utf-8') as f:
-    default_values = json.load(f)
 
 # Load full dataset for recommendations
 df = pd.read_csv(data_path)
@@ -54,11 +50,29 @@ subset_scaled = rec_scaler.fit_transform(subset_imputed)
 # Initialize SHAP explainer once
 explainer = shap.TreeExplainer(model)
 
+with open(os.path.join(base_dir, 'feature_defaults_by_tipo.json'), 'r', encoding='utf-8') as f:
+    default_values_by_tipo = json.load(f)
+
 def merge_with_defaults(user_input: dict) -> dict:
-    """Fill missing fields in user input using default values."""
-    filled = default_values.copy()
-    filled.update(user_input)  # user-supplied values override defaults
-    return filled
+    """
+    Fill missing fields in user input using defaults specific to 'Tipo' (Laptop/Desktop).
+    Falls back to the first available group if 'Tipo' not provided or unrecognized.
+    """
+    tipo = user_input.get("Tipo", "Laptop")  # Default to "Laptop" if not provided
+
+    tipo_defaults = {}
+    for col, tipo_dict in default_values_by_tipo.items():
+        # Try to fetch value for given tipo; fallback to first one if not found
+        if tipo in tipo_dict:
+            tipo_defaults[col] = tipo_dict[tipo].get("default")
+        else:
+            fallback_tipo = next(iter(tipo_dict))
+            tipo_defaults[col] = tipo_dict[fallback_tipo].get("default")
+
+    # Merge defaults with user input (user input takes precedence)
+    merged = {**tipo_defaults, **user_input}
+    return merged
+
 
 def preprocess_input(data: dict) -> pd.DataFrame:
     df_input = pd.DataFrame([data])
