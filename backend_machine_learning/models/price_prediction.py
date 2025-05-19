@@ -96,23 +96,38 @@ def explain_prediction(preprocessed_df: pd.DataFrame, top_n=5):
     return explanation
 
 def recommend_nearest_partial_input(input_dict, top_n=5):
-    # Prepare input dataframe with selected columns
+    """
+    The function will return 5 nearest neighbors on a specific subset of the dataset.
+    The subset is dependant on whether it is a Laptop or Desktop. (So that only these kinds of devices will be recommended)
+    """
+    tipo = input_dict.get("Tipo", "Laptop")
+
+    # Filter the dataframe to only rows of the same Tipo
+    df_filtered = df[df["Tipo"] == tipo].reset_index(drop=True)
+    subset_df_filtered = subset_df.loc[df_filtered.index]
+    subset_encoded_filtered = pd.get_dummies(subset_df_filtered).fillna(0)
+
+    # Align columns with precomputed subset_encoded columns (subset_encoded is global)
+    subset_encoded_filtered = subset_encoded_filtered.reindex(columns=subset_encoded.columns, fill_value=0)
+
+    # Impute and scale filtered subset
+    subset_imputed_filtered = pd.DataFrame(rec_imputer.transform(subset_encoded_filtered), columns=subset_encoded.columns)
+    subset_scaled_filtered = rec_scaler.transform(subset_imputed_filtered)
+
     input_df = pd.DataFrame([input_dict])[selected_columns]
 
-    # One-hot encode input and align columns with subset_encoded columns
     input_encoded = pd.get_dummies(input_df)
     input_encoded = input_encoded.reindex(columns=subset_encoded.columns, fill_value=0)
 
-    # Impute and scale with pre-fitted imputers and scalers
     input_imputed = pd.DataFrame(rec_imputer.transform(input_encoded), columns=subset_encoded.columns)
     input_scaled = rec_scaler.transform(input_imputed)
 
-    # Compute distances and get nearest indices
-    distances = euclidean_distances(input_scaled, subset_scaled)[0]
+    # Compute distances and get nearest indices relative to filtered subset
+    distances = euclidean_distances(input_scaled, subset_scaled_filtered)[0]
     nearest_indices = distances.argsort()[:top_n]
 
-    # Return only Título and Precio_Rango columns from recommended rows
-    return df.loc[nearest_indices, ['Título', 'Precio_Rango']].to_dict(orient='records')
+    return df_filtered.loc[nearest_indices, ['Título', 'Precio_Rango']].to_dict(orient='records')
+
 
 def predict_price_with_explanation(user_input: dict) -> dict:
     """Predict price, provide feature importance, and recommend nearest neighbors."""
