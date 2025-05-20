@@ -77,7 +77,7 @@ Key tasks:
 - Regression models for price prediction
 - Feature importance used for interpretability
 - Clustering for product segmentation
-- Cosine similarity and distance metrics for recommending similar products
+- Distance metrics for recommending similar products
 
 ---
 
@@ -112,7 +112,7 @@ The app was deployed as a web application with full interactivity. Feedback mech
 
 ## 📁 Notebooks and Code
 
-See `3_0_EDA_Structure_Template.ipynb` for the structured notebook used in data cleaning, transformation, and EDA.
+See `EDA.ipynb` for the structured notebook used in data cleaning, transformation, and EDA.
 
 ---
 
