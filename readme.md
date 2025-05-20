@@ -1,4 +1,4 @@
-# Machine Learning Web Application for Price Prediction and Recommendation
+# 💻 Machine Learning Web Application for Price Prediction and Recommendation
 
 This project is a complete end-to-end machine learning pipeline and web application that processes a messy, real-world dataset of computer products scraped from an online marketplace. It handles multilingual data cleaning, price prediction using ML models, clustering for segmentation, and recommendation of similar products. The final output is an interactive app that supports descriptive, predictive, and prescriptive analytics.
 
@@ -9,8 +9,9 @@ This project is a complete end-to-end machine learning pipeline and web applicat
 - Clean and preprocess semi-structured, multilingual product data.
 - Predict product prices using regression models.
 - Enable similarity-based product recommendations.
-- Cluster products into meaningful groups.
+- Cluster similar products to clarify categories.
 - Deploy a user-facing web application with interactive features.
+- Recommend similar products based on user input.
 
 ---
 
@@ -20,7 +21,7 @@ This project is a complete end-to-end machine learning pipeline and web applicat
 - **Columns:** 135
 - **Language:** Spanish
 - **Types:** Text, numeric, categorical, semi-structured
-- **Source:** Online marketplace of electronic products
+- **Source:** Online marketplace with laptops, desktops, and components
 
 ---
 
@@ -30,9 +31,10 @@ Key tasks:
 - Normalized and renamed columns.
 - Used regular expressions and helper functions (e.g., `parse_spanish_number`) to clean text.
 - Applied domain-specific imputations:
-  - Median for numeric values.
-  - Mode for binary/categorical.
-  - Context-aware forward-fill (e.g., within product series).
+  - **Mode**: For common categorical/binary fields  
+  - **Median**: For skewed numeric values  
+  - **Domain Inference**: Used related fields to infer missing values  
+  - **Special Labels**: Explicitly used 'Missing' or 'None' when appropriate
 - Dropped high-missingness or low-value fields.
 - Standardized units (e.g., Wh for battery, GB for RAM).
 
@@ -40,7 +42,7 @@ Key tasks:
 
 ## 🛠️ Feature Engineering
 
-- Created new features:
+- Created derived features:
   - `screen_size_class`, `total_pixel_count`
   - Binary flags for features like Bluetooth, camera, touchscreen
 - Parsed:
@@ -63,6 +65,10 @@ Key tasks:
   - Missingness matrix
   - Screen size histograms
   - Price distribution
+- Feature Decisions:
+  - Grouped low-frequency brands
+  - Dropped columns with >95% missingness
+  - Standardized units and removed outliers
 
 ---
 
@@ -90,11 +96,11 @@ Key tasks:
 
 ## 🧠 Lessons Learned
 
-- Regex-based parsing outperforms naive cleaning.
-- Forward-fill is effective for structured product series.
-- Binary flags improve model training readiness.
-- Domain expertise is critical for imputing missing values.
-- Track column drops carefully to avoid unintentional data loss.
+- Real-world data cleaning needs domain-specific inference
+- Regex parsing is more robust than naive cleaning
+- Binary flags and normalization improve model readiness
+- Forward-fill works well in structured product series
+- Always drop columns **after** cleaning to prevent data loss
 
 ---
 
