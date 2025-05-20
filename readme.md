@@ -118,5 +118,5 @@ See `EDA.ipynb` for the structured notebook used in data cleaning, transformatio
 
 ## 👥 Authors
 
-Oskar Kloczco, Ruben de Juan Grande, Daniel Aguilar, Michail Sifakis, George Vashakidze, Qamar Hussein
+Oskar Kloczko, Ruben de Juan Grande, Daniel Aguilar, Michail Sifakis, George Vashakidze, Qamar Hussein Aftan
 
