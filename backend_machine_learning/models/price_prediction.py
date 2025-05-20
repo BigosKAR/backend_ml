@@ -95,37 +95,69 @@ def explain_prediction(preprocessed_df: pd.DataFrame, top_n=5):
     explanation = [{"feature": f, "contribution": float(val)} for f, val in top_features]
     return explanation
 
-def recommend_nearest_partial_input(input_dict, top_n=5):
-    # Prepare input dataframe with selected columns
-    input_df = pd.DataFrame([input_dict])[selected_columns]
+def recommend_nearest_partial_input(user_input: dict, predicted_price: float, top_n=5):
+    """
+    Recommend nearest devices using only user-provided features + predicted price,
+    matching the device type (Laptop/Desktop).
+    """
+    tipo = user_input.get("Tipo", "Laptop")
 
-    # One-hot encode input and align columns with subset_encoded columns
+    # Filter dataset by type
+    df_filtered = df[df["Tipo"] == tipo].reset_index(drop=True)
+
+    # Select only user-provided features that exist in selected_columns (exclude Tipo)
+    user_features = [f for f in user_input.keys() if f != "Tipo" and f in selected_columns]
+
+    if not user_features:
+        # If user provides no features (other than Tipo), fallback to recommending by price only
+        user_features = []
+
+    # Build dataframe of candidate features + Precio_Rango (price) for distance calculation
+    candidate_features_df = df_filtered[user_features].copy() if user_features else pd.DataFrame(index=df_filtered.index)
+    candidate_features_df["Precio_Rango"] = df_filtered["Precio_Rango"]
+
+    # Build input vector with user features + predicted price
+    input_vector = {}
+    for f in user_features:
+        input_vector[f] = user_input[f]
+    input_vector["Precio_Rango"] = predicted_price
+
+    input_df = pd.DataFrame([input_vector])
+
+    # One-hot encode categorical features in both candidate and input (if any)
+    candidate_encoded = pd.get_dummies(candidate_features_df)
     input_encoded = pd.get_dummies(input_df)
-    input_encoded = input_encoded.reindex(columns=subset_encoded.columns, fill_value=0)
 
-    # Impute and scale with pre-fitted imputers and scalers
-    input_imputed = pd.DataFrame(rec_imputer.transform(input_encoded), columns=subset_encoded.columns)
-    input_scaled = rec_scaler.transform(input_imputed)
+    # Align columns
+    input_encoded = input_encoded.reindex(columns=candidate_encoded.columns, fill_value=0)
+
+    # Scale numeric features (including price) for fair distance measurement
+    scaler = StandardScaler()
+    candidate_scaled = scaler.fit_transform(candidate_encoded)
+    input_scaled = scaler.transform(input_encoded)
 
     # Compute distances and get nearest indices
-    distances = euclidean_distances(input_scaled, subset_scaled)[0]
+    distances = euclidean_distances(input_scaled, candidate_scaled)[0]
     nearest_indices = distances.argsort()[:top_n]
 
-    # Return only Título and Precio_Rango columns from recommended rows
-    return df.loc[nearest_indices, ['Título', 'Precio_Rango']].to_dict(orient='records')
+    # Return titles and price ranges of nearest neighbors
+    return df_filtered.loc[nearest_indices, ['Título', 'Precio_Rango']].to_dict(orient='records')
+
 
 def predict_price_with_explanation(user_input: dict) -> dict:
     """Predict price, provide feature importance, and recommend nearest neighbors."""
-    full_input = merge_with_defaults(user_input)
+    full_input = merge_with_defaults(user_input)  # only for prediction
+
     preprocessed = preprocess_input(full_input)
     log_price = model.predict(preprocessed)
     price = np.expm1(log_price)[0]
 
     explanation = explain_prediction(preprocessed)
-    recommendations = recommend_nearest_partial_input(full_input)
+    recommendations = recommend_nearest_partial_input(user_input, price)
 
     return {
         "predicted_price": round(price, 2),
         "feature_importance": explanation,
         "nearest_recommendations": recommendations
     }
+
